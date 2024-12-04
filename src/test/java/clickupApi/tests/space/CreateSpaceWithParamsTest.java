@@ -36,9 +36,12 @@ class CreateSpaceWithParamsTest {
 
         final var spaceId = response.jsonPath().getString("id");
 
+        // Update Space Name
 
         final var updateSpaceRequestDto = UpdateSpaceRequest.updateSpace(spaceDto, spaceId);
         Assertions.assertThat(updateSpaceRequestDto.getName()).isEqualTo(updateSpaceName);
+
+        // Delete Space
 
         Response deleteRespond = DeleteSpaceRequest.deleteSpace(spaceId);
         Assertions.assertThat(deleteRespond.statusCode()).isEqualTo(200);
